@@ -1,13 +1,23 @@
-import os
+# %%
 import openai
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+# %%
+from openai import OpenAI
 
-response = openai.ChatCompletion.create(
-    model="gpt-4",
+# %%
+client=OpenAI()
+
+# %%
+import os
+
+# %%
+response = client.chat.completions.create(
+    model="gpt-4o",
     messages=[
-        {"role": "user", "content": "Bonjour, que peux-tu faire ?"}
+        {"role": "user", "content": "is it too late to join the course?"}
     ]
 )
 
-print(response.choices[0].message["content"])
+
+# %%
+response.choices[0].message["content"]
